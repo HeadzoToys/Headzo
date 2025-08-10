@@ -71,14 +71,23 @@
       color:#444;         /* softer than black */
       font-weight:500;    /* lighter weight */
     }
+
+    /* Field row: label on left, input on right (desktop) */
     #mc_embed_signup .mc-field-group {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
+      justify-content: center;  /* keep overall block centered */
+      gap: 12px;
+      margin-top: 8px;
     }
     #mc_embed_signup .mc-field-group label { 
-      font-weight:600; 
-      text-align:center; 
+      font-weight:500; 
+      color:#666;
+      font-size: 0.9rem;
+      min-width: 130px;
+      text-align: right;
+      margin: 0;
     }
     #mc_embed_signup .mc-field-group input {
       height: 42px;
@@ -86,6 +95,18 @@
       width: 100%;
       max-width: 400px;
     }
+    /* Mobile: stack label over input */
+    @media (max-width: 520px) {
+      #mc_embed_signup .mc-field-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      #mc_embed_signup .mc-field-group label {
+        text-align: center;
+        min-width: 0;
+      }
+    }
+
     #mc_embed_signup .button {
       background-color: var(--brand-red);
       transition: background-color .2s ease;
@@ -94,7 +115,7 @@
       font-weight:700;
       border-radius:8px;
       width: 200px;
-      margin-top: 10px;
+      margin: 12px auto 0 auto;
     }
     #mc_embed_signup .button:hover { background-color: var(--brand-red-dark); }
 
@@ -127,10 +148,10 @@
           <div id="mc_embed_signup_scroll">
             <h2>Sign up to receive discounts, occasional updates on new releases, and alerts about small run and one-of-a-kind items</h2>
 
-            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+            <!-- Removed "indicates required" and asterisks -->
 
             <div class="mc-field-group">
-              <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+              <label for="mce-EMAIL">Email address</label>
               <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required value="">
             </div>
 
@@ -147,7 +168,7 @@
             <div class="optionalParent">
               <div class="clear foot" style="display:flex;flex-direction:column;align-items:center;gap:10px;">
                 <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-                <!-- Mailchimp referral badge -->
+                <!-- Mailchimp referral badge (optional; remove this <p> if you don't want it) -->
                 <p style="margin:0;">
                   <a href="http://eepurl.com/jkZ64Y" title="Mailchimp - email marketing made easy and fun">
                     <span style="display:inline-block; border-radius:4px;">
@@ -185,7 +206,7 @@
     }(jQuery));
     var $mcj = jQuery.noConflict(true);
 
-    // Footer year
+    // Footer year (auto-updates)
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
