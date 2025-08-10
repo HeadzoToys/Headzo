@@ -71,32 +71,29 @@
       font-weight:500;
     }
 
-    /* Row: label | input | button */
+    /* Grid row: label | input | button */
     #mc_embed_signup .mc-field-group {
-      display: flex;
-      flex-direction: row;
-      align-items: center;   /* vertical align all children */
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 120px 1fr auto; /* label | field | button */
       gap: 10px;
-      flex-wrap: wrap;
+      align-items: center;  /* perfect vertical centering */
       margin-top: 6px;
+      text-align: left;
     }
     #mc_embed_signup .mc-field-group label { 
       font-weight: 500; 
       color: #666;
       font-size: 0.9rem;
-      min-width: 110px;
       text-align: right;
       margin: 0;
     }
 
-    /* Force identical box metrics */
+    /* Identical box metrics for input + button */
     #mc_embed_signup .mc-field-group input[type="email"] {
       height: 40px !important;
       box-sizing: border-box !important;
       font-size: 15px;
-      width: 250px;
-      max-width: 100%;
+      width: 100%;
       padding: 0 10px;
       border: 1px solid #c9c9c9;
       border-radius: 8px;
@@ -114,23 +111,22 @@
       font-weight: 700;
       line-height: normal !important;
       width: auto;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
     }
     #mc_embed_signup .mc-field-group .button:hover {
       background-color: var(--brand-red-dark) !important;
     }
 
-    /* Mobile: stack everything */
+    /* Mobile: stack label, input, button */
     @media (max-width: 520px) {
       #mc_embed_signup .mc-field-group {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        text-align: center;
       }
       #mc_embed_signup .mc-field-group label {
         text-align: center;
-        min-width: 0;
-      }
-      #mc_embed_signup .mc-field-group input[type="email"] {
-        width: 100%;
       }
       #mc_embed_signup .mc-field-group .button {
         width: 100%;
@@ -164,9 +160,9 @@
         <form action="https://headzotoys.us18.list-manage.com/subscribe/post?u=f03377bc30ec66aa74e149ffc&amp;id=76b776feed&amp;f_id=00a3b8e6f0"
               method="post" target="_blank" novalidate>
           <div id="mc_embed_signup_scroll">
-            <h2>Sign up to receive discounts, occasional updates on new releases and alerts about small run and one-of-a-kind items</h2>
+            <h2>Sign up to receive discounts, occasional updates about new releases and alerts about small run and one-of-a-kind items</h2>
 
-            <!-- Label | Input | Button row -->
+            <!-- Grid: Label | Input | Button -->
             <div class="mc-field-group">
               <label for="mce-EMAIL">Email address</label>
               <input type="email" name="EMAIL" id="mce-EMAIL" required>
@@ -185,7 +181,7 @@
   </main>
 
   <footer>
-    &copy; <span id="year"></span> Headzo Toys 
+    &copy; <span id="year"></span> Headzo Toys
   </footer>
 
   <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
