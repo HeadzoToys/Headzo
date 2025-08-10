@@ -14,7 +14,7 @@
       font-family: Arial, sans-serif;
       background-color: #ffffff;
       margin: 0;
-      padding: 30px 20px; /* compact */
+      padding: 30px 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -26,19 +26,19 @@
       max-width: 300px;
       width: 100%;
       height: auto;
-      margin: 0 auto 15px auto; /* compact */
+      margin: 0 auto 15px auto;
       display: block;
     }
     p.intro {
       font-size: 1.2em;
       max-width: 600px;
-      margin: 0 auto 25px auto; /* compact */
+      margin: 0 auto 25px auto;
       color: #555;
     }
     a.button {
       display: block;
       width: 220px;
-      margin: 8px auto; /* compact */
+      margin: 8px auto;
       padding: 12px 0;
       background-color: var(--brand-red);
       color: white;
@@ -51,7 +51,7 @@
 
     /* Mailchimp overrides */
     #mc_embed_shell { 
-      margin: 25px auto 0 auto; /* compact */
+      margin: 25px auto 0 auto;
       text-align: center;
     }
     #mc_embed_signup {
@@ -66,7 +66,7 @@
     #mc_embed_signup h2 {
       font-size: 0.95rem;
       line-height: 1.4;
-      margin: 0 0 10px 0; /* compact */
+      margin: 0 0 10px 0;
       color:#444;
       font-weight:500;
     }
@@ -75,44 +75,49 @@
     #mc_embed_signup .mc-field-group {
       display: flex;
       flex-direction: row;
-      align-items: center;     /* center items vertically */
-      justify-content: center; /* center the whole row */
+      align-items: center;   /* vertical align all children */
+      justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
       margin-top: 6px;
     }
     #mc_embed_signup .mc-field-group label { 
-      font-weight:500; 
-      color:#666;
+      font-weight: 500; 
+      color: #666;
       font-size: 0.9rem;
       min-width: 110px;
       text-align: right;
       margin: 0;
     }
 
-    /* ✅ Force equal heights & proper box sizing */
-    #mc_embed_signup .mc-field-group input[type="email"],
-    #mc_embed_signup .mc-field-group .button {
-      height: 40px !important;
-      line-height: 40px !important;
-      box-sizing: border-box !important;
-    }
-
+    /* Force identical box metrics */
     #mc_embed_signup .mc-field-group input[type="email"] {
+      height: 40px !important;
+      box-sizing: border-box !important;
       font-size: 15px;
       width: 250px;
       max-width: 100%;
       padding: 0 10px;
+      border: 1px solid #c9c9c9;
+      border-radius: 8px;
+      line-height: normal !important;
     }
     #mc_embed_signup .mc-field-group .button {
-      background-color: var(--brand-red) !important;
-      transition: background-color .2s ease;
-      font-weight: 700;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      height: 40px !important;
+      padding: 0 20px !important;
+      border: 1px solid transparent;
       border-radius: 8px !important;
-      padding: 0 20px !important; /* keep height consistent */
+      background-color: var(--brand-red) !important;
+      font-weight: 700;
+      line-height: normal !important;
       width: auto;
     }
-    #mc_embed_signup .mc-field-group .button:hover { background-color: var(--brand-red-dark) !important; }
+    #mc_embed_signup .mc-field-group .button:hover {
+      background-color: var(--brand-red-dark) !important;
+    }
 
     /* Mobile: stack everything */
     @media (max-width: 520px) {
@@ -159,7 +164,7 @@
         <form action="https://headzotoys.us18.list-manage.com/subscribe/post?u=f03377bc30ec66aa74e149ffc&amp;id=76b776feed&amp;f_id=00a3b8e6f0"
               method="post" target="_blank" novalidate>
           <div id="mc_embed_signup_scroll">
-            <h2>Sign up to receive discounts, occasional updates on new releases and alerts about small run and one-of-a-kind items</h2>
+            <h2>Sign up to receive discounts, occasional updates on new releases, and alerts about small run and one-of-a-kind items</h2>
 
             <!-- Label | Input | Button row -->
             <div class="mc-field-group">
@@ -180,12 +185,11 @@
   </main>
 
   <footer>
-    &copy; <span id="year"></span> Headzo Toys 
+    &copy; <span id="year"></span> Headzo Toys LLC
   </footer>
 
   <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
   <script>
-    // Ensure footer year populates after DOM is ready
     document.addEventListener("DOMContentLoaded", function(){
       var yearSpan = document.getElementById('year');
       if (yearSpan) yearSpan.textContent = new Date().getFullYear();
