@@ -74,9 +74,9 @@
     /* Grid row: label | input | button */
     #mc_embed_signup .mc-field-group {
       display: grid;
-      grid-template-columns: 120px 1fr auto; /* label | field | button */
+      grid-template-columns: 120px 1fr auto;
       gap: 10px;
-      align-items: center;  /* perfect vertical centering */
+      align-items: center;
       margin-top: 6px;
       text-align: left;
     }
@@ -88,7 +88,6 @@
       margin: 0;
     }
 
-    /* Identical box metrics for input + button */
     #mc_embed_signup .mc-field-group input[type="email"] {
       height: 40px !important;
       box-sizing: border-box !important;
@@ -114,12 +113,11 @@
       color: #fff;
       text-decoration: none;
       cursor: pointer;
+      appearance: none; -webkit-appearance: none;
     }
-    #mc_embed_signup .mc-field-group .button:hover {
-      background-color: var(--brand-red-dark) !important;
-    }
+    #mc_embed_signup .mc-field-group .button:hover { background-color: var(--brand-red-dark) !important; }
 
-    /* Mobile: stack label, input, button */
+    /* Mobile */
     @media (max-width: 520px) {
       #mc_embed_signup .mc-field-group {
         grid-template-columns: 1fr;
@@ -131,6 +129,7 @@
       #mc_embed_signup .mc-field-group .button {
         width: 100%;
         margin-top: 8px;
+        transform: none !important; /* cancel the nudge on mobile */
       }
     }
 
@@ -139,6 +138,12 @@
       color: #888;
       margin-top: 25px;
       padding: 15px 0 8px 0;
+    }
+
+    /* 🔧 FINAL NU D GE OVERRIDE — moves button down 2px */
+    #mc_embed_signup .mc-field-group .button {
+      transform: translateY(2px) !important;
+      margin: 0 !important;
     }
   </style>
 </head>
@@ -162,14 +167,12 @@
           <div id="mc_embed_signup_scroll">
             <h2>Sign up to receive discounts, occasional updates about new releases and alerts about small run and one-of-a-kind items</h2>
 
-            <!-- Grid: Label | Input | Button -->
             <div class="mc-field-group">
               <label for="mce-EMAIL">Email address</label>
               <input type="email" name="EMAIL" id="mce-EMAIL" required>
               <input type="submit" name="subscribe" class="button" value="Subscribe">
             </div>
 
-            <!-- Honeypot (leave in place) -->
             <div style="position:absolute; left:-5000px;" aria-hidden="true">
               <input type="text" name="b_f03377bc30ec66aa74e149ffc_76b776feed" tabindex="-1" value="">
             </div>
@@ -181,7 +184,7 @@
   </main>
 
   <footer>
-    &copy; <span id="year"></span> Headzo Toys
+    &copy; <span id="year"></span> Headzo Toys 
   </footer>
 
   <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
