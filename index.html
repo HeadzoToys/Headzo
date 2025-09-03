@@ -40,7 +40,7 @@
     }
 
     /* ===============================
-       CTA buttons (kill underline forever)
+       CTA buttons
        =============================== */
     a.cta{
       display:block;
@@ -50,30 +50,30 @@
       font-size:1.05em;
       color:#fff;
       background:var(--brand-red);
-      border:1px solid transparent;           /* avoids seam flashes */
+      border:1px solid transparent;
       border-radius:8px;
       text-decoration:none !important;
       -webkit-text-decoration:none !important;
-      text-decoration-thickness:0 !important;
-      text-underline-offset:0 !important;
       outline:none;
       box-shadow:none;
       background-clip:padding-box;
       transition: background-color .2s ease;
       -webkit-tap-highlight-color: transparent;
     }
-    /* High-specificity hover/focus to beat any global a:hover */
     html body a.cta:hover,
     html body a.cta:focus,
     html body a.cta:active{
       text-decoration:none !important;
       -webkit-text-decoration:none !important;
+      border-bottom:none !important;
       background:var(--brand-red-dark);
     }
     a.cta:focus-visible{
       outline:3px solid var(--focus-ring);
       outline-offset:2px;
     }
+    a.cta::before,
+    a.cta::after { content:none !important; }
 
     /* ===============================
        Mailchimp area
@@ -90,20 +90,19 @@
       margin:0 0 10px; color:#444; font-weight:500;
     }
 
-    /* Grid row: label | input | button
-       One 40px track so both fields are exactly the same height */
+    /* Grid row: label | input | button */
     #mc_embed_signup .mc-field-group{
       display:grid;
       grid-template-columns: max-content 250px max-content;
-      grid-auto-rows: 40px;                   /* row height = 40px */
-      align-items: center;                    /* center label text */
+      grid-auto-rows: 40px;
+      align-items:center;
       justify-content:center;
       gap:10px;
       margin-top:6px;
     }
     @media (max-width:520px){
       #mc_embed_signup .mc-field-group{
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
         gap:8px;
       }
     }
@@ -111,17 +110,17 @@
     #mc_embed_signup .mc-field-group label{
       font-weight:500; color:#666; font-size:.9rem;
       margin:0; text-align:right; min-width:110px;
-      line-height:40px;                        /* vertically centered in 40px track */
+      line-height:40px;
     }
     @media (max-width:520px){
       #mc_embed_signup .mc-field-group label{ text-align:center; min-width:0; }
     }
 
-    /* Normalize metrics: both stretch to the 40px track */
+    /* Normalize metrics */
     #mc_embed_signup .mc-field-group input[type="email"],
     #mc_embed_signup .mc-field-group .button{
-      box-sizing: border-box !important;
-      height: 100% !important;                /* fill the 40px track */
+      box-sizing:border-box !important;
+      height:100% !important;
       border-radius:8px !important;
       font-size:15px;
     }
@@ -134,7 +133,6 @@
       color:var(--text);
       outline:none;
       line-height: normal;
-      vertical-align: middle;
       background:#fff;
     }
     #mc_embed_signup .mc-field-group input[type="email"]::placeholder{ color:#888; }
@@ -143,34 +141,34 @@
       outline-offset:2px;
     }
 
-    /* Submit button: hard reset first, then rebuild */
+    /* Submit button */
     #mc_embed_signup .mc-field-group .button{
-      all: unset;                              /* wipe Mailchimp styles */
+      all: unset;
       display:inline-flex !important;
       align-items:center; justify-content:center;
+      height:100% !important;
       padding:0 20px !important;
-      border:1px solid var(--field-border);    /* same border thickness as input */
+      border:1px solid transparent !important; /* looks borderless */
       border-radius:8px !important;
       background:var(--brand-red) !important;
       color:#fff !important;
+      font-size:15px;
       font-weight:700;
-      box-shadow:none !important;
       text-decoration:none !important;
+      box-shadow:none !important;
       outline:none !important;
       background-clip:padding-box;
       -webkit-appearance:none; appearance:none;
       cursor:pointer;
-      line-height: normal;
-      vertical-align: middle;
+      line-height:normal;
     }
-    /* On hover, keep the border so height stays identical */
     #mc_embed_signup .mc-field-group .button:hover{
       background:var(--brand-red-dark) !important;
-      border-color: var(--field-border) !important;
+      border-color:transparent !important;
     }
     #mc_embed_signup .mc-field-group .button:focus-visible{
-      outline:3px solid var(--focus-ring) !important;
-      outline-offset:2px !important;
+      outline:none !important;
+      box-shadow:0 0 0 3px var(--focus-ring) !important;
     }
 
     footer{ font-size:.85em; color:#888; margin-top:25px; padding:15px 0 8px; }
@@ -180,7 +178,7 @@
   <main>
     <img src="headzo toys banner.png" alt="Headzo Toys Logo" class="logo" />
     <p class="intro">
-      Specializing in unique 3D-printed creations along with unique heads and accessories for your action figures and Mego customs
+      Specializing in unique 3D-printed creations along with heads and accessories for your action figures and Mego customs
     </p>
 
     <!-- CTAs -->
@@ -219,10 +217,9 @@
 
   <script src="https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
   <script>
-    // Year
     (function(){
-      var yearSpan = document.getElementById("year");
-      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+      var yearSpan=document.getElementById("year");
+      if(yearSpan) yearSpan.textContent=new Date().getFullYear();
     })();
   </script>
   <noscript><div style="padding:8px; color:#111;">JavaScript is disabled. The page still works, but the signup validation script won’t load.</div></noscript>
