@@ -100,20 +100,11 @@
       gap:10px;
       margin-top:6px;
     }
-    @media (max-width:520px){
-      #mc_embed_signup .mc-field-group{
-        grid-template-columns:1fr;
-        gap:8px;
-      }
-    }
 
     #mc_embed_signup .mc-field-group label{
       font-weight:500; color:#666; font-size:.9rem;
       margin:0; text-align:right; min-width:110px;
       line-height:40px;
-    }
-    @media (max-width:520px){
-      #mc_embed_signup .mc-field-group label{ text-align:center; min-width:0; }
     }
 
     /* Normalize metrics */
@@ -169,6 +160,24 @@
     #mc_embed_signup .mc-field-group .button:focus-visible{
       outline:none !important;
       box-shadow:0 0 0 3px var(--focus-ring) !important;
+    }
+
+    /* ===== Mobile: stack and make input+button same width ===== */
+    @media (max-width:520px){
+      #mc_embed_signup .mc-field-group{
+        grid-template-columns:1fr;
+        gap:8px;
+      }
+      #mc_embed_signup .mc-field-group label{
+        text-align:center; min-width:0;
+        line-height:1.2; /* tighter label on mobile */
+      }
+      #mc_embed_signup .mc-field-group input[type="email"],
+      #mc_embed_signup .mc-field-group .button{
+        width:100% !important;
+        max-width:100% !important;
+        justify-content:center;   /* centers button text */
+      }
     }
 
     footer{ font-size:.85em; color:#888; margin-top:25px; padding:15px 0 8px; }
